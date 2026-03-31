@@ -33,7 +33,7 @@ model event {
   price       Decimal  @db.Decimal(10, 2)
   totalPlaces Int
   category    EventCategory
-  image?      String
+  image      String?
 }
 
 // TODO: Ajouter le modele Event
