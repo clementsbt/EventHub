@@ -4,6 +4,7 @@
   "description": "API REST pour EventHub - Plateforme de billetterie",
   "main": "dist/index.js",
   "scripts": {
+    "prisma": "npx -p better-sqlite3 -p prisma prisma studio --url file:./dev.db",
     "dev": "nodemon --exec ts-node src/index.ts",
     "build": "tsc && npm run db:generate",
     "start": "node dist/index.js",
