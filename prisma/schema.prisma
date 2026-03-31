@@ -30,7 +30,7 @@ model event {
   title       String
   date        DateTime
   place       String
-  price       Decimal  @db.Decimal(10, 2)
+  price       Decimal
   totalPlaces Int
   category    EventCategory
   image      String?
