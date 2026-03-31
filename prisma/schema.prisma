@@ -10,19 +10,30 @@ datasource db {
 // Suivez le guide GUIDE.md pour l'implementation complete
 
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  password  String
-  name      String
-  role      Role     @default(USER)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          Int      @id @default(autoincrement())
+  email       String   @unique
+  password    String
+  name        String
+  role        Role     @default(USER)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   // TODO: Ajouter les relations
   // events  Event[]
   // tickets Ticket[]
 
   @@map("users")
+}
+
+model event {
+  id          Int     @id @default(autoincrement())
+  title       String
+  date        DateTime
+  place       String
+  price       Decimal  @db.Decimal(10, 2)
+  totalPlaces Int
+  category    EventCategory
+  image?      String
 }
 
 // TODO: Ajouter le modele Event
@@ -34,4 +45,12 @@ enum Role {
   ADMIN
 }
 
+enum EventCategory {
+  CONCERT
+  CONFERENCE
+  FESTIVAL
+  SPORT
+  THEATRE
+  AUTRE
+}
 // TODO: Ajouter les autres enums (Category, TicketStatus)
