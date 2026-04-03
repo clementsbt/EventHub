@@ -1,6 +1,7 @@
 import app from './app.js';
 import { config } from './config/index.js';
 import { prisma } from './lib/prisma.js';
+import eventRoutes from './routes/event.routes.js'
 
 async function main() {
   try {
@@ -17,7 +18,9 @@ async function main() {
   }
 }
 
-main();
+app.use('/api/v1/events', eventRoutes)
+
+main()
 
 process.on('SIGINT', async () => {
   await prisma.$disconnect();
